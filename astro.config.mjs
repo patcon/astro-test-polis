@@ -5,5 +5,7 @@ import netlify from "@astrojs/netlify";
 // https://astro.build/config
 export default defineConfig({
   output: 'hybrid',
-  adapter: netlify()
+  adapter: netlify({
+    edgeMiddleware: true
+  })
 });
