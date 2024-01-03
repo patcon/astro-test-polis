@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 
-const ipv6 = Astro.clientAddress;
+const ipv6 = Astro.locals.netlify.context.ip;
 
 const pageTitle = "About Me";
 
