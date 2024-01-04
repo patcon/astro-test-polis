@@ -1,0 +1,26 @@
+---
+const { formId, enableSandbox }  = Astro.props;
+---
+<div
+  id="myTypeform"
+  {...{"data-tf-enable-sandbox": enableSandbox}}
+  data-tf-on-submit="onTypeformSubmit"
+  data-tf-widget={ formId }
+  data-tf-opacity="100"
+  data-tf-hide-headers
+  data-tf-inline-on-mobile
+  data-tf-iframe-props="title=Testing"
+  data-tf-transitive-search-params
+  data-tf-auto-focus
+  data-tf-medium="snippet"
+  data-tf-full-screen
+  data-tf-hidden="xid=null">
+</div>
+<script is:inline src="//embed.typeform.com/next/embed.js"></script>
+<script>
+  function onTypeformSubmit(data) {
+    console.log('form submitted', data)
+    document.cookie = `xid=${xid}; SameSite=None; Secure`;
+    window.location.replace("http://localhost:9000/participate");
+  }
+</script>

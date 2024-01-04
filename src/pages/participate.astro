@@ -1,17 +1,7 @@
 ---
-import '../styles/global.css'
+import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "Participate";
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{ pageTitle }</title>
-	</head>
-	<body>
-		<h1>{ pageTitle }</h1>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <p>This is where polis conversation will go</p>
+</BaseLayout>
