@@ -13,6 +13,7 @@
     "@astrojs/netlify": "^4.1.0",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.0.9",
+    "flowbite": "^2.2.1",
     "tailwindcss": "^3.4.0"
   }
 }
