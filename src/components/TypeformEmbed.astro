@@ -16,11 +16,30 @@ const { formId, enableSandbox }  = Astro.props;
   data-tf-full-screen
   data-tf-hidden="xid=null">
 </div>
+<script is:inplace>
+  function uuidv4() {
+    return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
+  }
+
+  let xid = localStorage.getItem('xid');
+  if (!xid) {
+    console.log('No xid found. Generating new one...');
+    xid = uuidv4();
+    localStorage.setItem('xid', xid);
+    console.log('New xid saved to localStorage: ' + xid);
+  }
+</script>
+<script is:inline>
+  const elem = document.getElementById('myTypeform');
+  elem.setAttribute('data-tf-hidden', `xid=${xid}`);
+</script>
 <script is:inline src="//embed.typeform.com/next/embed.js"></script>
-<script>
+<script is:inline>
   function onTypeformSubmit(data) {
     console.log('form submitted', data)
     document.cookie = `xid=${xid}; SameSite=None; Secure`;
-    window.location.replace("http://localhost:9000/participate");
+    window.location.replace("/participate");
   }
 </script>
