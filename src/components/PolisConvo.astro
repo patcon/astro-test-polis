@@ -1,5 +1,10 @@
 ---
-const { convoId } = Astro.props;
+const { convoId, hideTitle, hideDescription } = Astro.props;
 ---
-<div class="polis" data-conversation_id={ convoId }></div>
+{/* Disable topic and description. */}
+<div class="polis"
+  data-conversation_id={ convoId }
+  {...{"data-ucst": !!hideTitle }}
+  {...{"data-ucsd": !!hideDescription }}
+></div>
 <script async src="https://pol.is/embed.js"></script>
