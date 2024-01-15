@@ -1,0 +1,3 @@
+- [ ] allow sharing session between devices
+  - example: https://travle.earth/
+  - https://github.com/patcon/astro-test-polis/issues/1
