@@ -37,19 +37,27 @@
 <script>
   const params = new URLSearchParams(document.location.search);
   const isReturn = params.get("return");
+
   const xid = localStorage.getItem("polisUserXid");
   const isDoneSurvey = localStorage.getItem("isDoneSurvey");
 
-  if (!xid || !isDoneSurvey) {
-    if (isReturn) {
+  function isMissingSessionData() {
+    return !xid || !isDoneSurvey;
+  }
+
+  if (isReturn) {
+    if (isMissingSessionData()) {
       // Returning, but missing session data.
       const elem = document.getElementById("static-modal");
       const modal = new Flowbite.default.Modal(elem, { backdrop: "static", closable: false });
       modal.show();
     } else {
-      // Arriving without any session history, so redirect to front page.
-      // TODO: Consider still warning when someone visits this page directly.
-      window.location.replace("/");
+      // Remove ?return=true from browser history, so less chance of sharing link.
+      history.replaceState({}, "", "/participate");
     }
+  } else if (isMissingSessionData()) {
+    // Arriving without any session history, so redirect to front page.
+    // TODO: Consider still warning when someone visits this page directly.
+    window.location.replace("/");
   }
 </script>
