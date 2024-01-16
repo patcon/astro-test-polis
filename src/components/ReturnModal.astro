@@ -44,7 +44,7 @@
     if (isReturn) {
       // Returning, but missing session data.
       const elem = document.getElementById("static-modal");
-      const modal = new Flowbite.default.Modal(elem, { backdrop: "staric", closable: false });
+      const modal = new Flowbite.default.Modal(elem, { backdrop: "static", closable: false });
       modal.show();
     } else {
       // Arriving without any session history, so redirect to front page.
