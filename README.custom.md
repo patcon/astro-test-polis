@@ -33,16 +33,18 @@ Polis conversation -- there is no way to update an existing Polis conversation.
 1. Copy the value of `data-site_id` from the intergration code snippet.
     - it should be of the pattern `polis_site_id_XXXXXXXXXXXXXXXXXX`
     - we will call this `{{SITE_ID}}`
-1. Visit the following URL: `https://pol.is/{{SITE_ID}}/{{ARBITRARY_STRING}}?parent_url={{BASE_URL}}/participate/?return=true`
+1. Visit the following URL: `https://pol.is/{{SITE_ID}}/{{ARBITRARY_STRING}}?show_vis=true&auth_opt_fb=false&auth_opt_tw=false&auth_needed_to_vote=false&auth_needed_to_write=false&parent_url={{BASE_URL}}/participate/?return=true`
     - use `{{SITE_ID}}` and `{{BASE_URL}}` from above
     - `{{ARBITRARY_STRING}}` can be value, and never shows up in the interface,
       but must be unique for every subsequently generated conversation. The
       recommendation is to either mash the keyboard, or just keep incrementing
       a value like `local-v1` or `prod-v1` whenever you want to generate a new
       polis convo.
-    - e.g., `https://pol.is/polis_site_id_XXXXXXXXXXXXXXXXXX/foobar?parent_url=http://localhost:4321/participate/?return=true`
+    - the other query parameters in the URL just pre-configure the new
+      conversation to show the visualization and not require special
+      authorization via Twitter or Facebook, which would conflict.
 1. You will be redirected to a new Polis conversation URL
-    - e.g., `https://pol.is/9dcfba8kv6?site_id=polis_site_id_XXXXXXXXXXXXXXXXXX&page_id=foobar&parent_url=http%3A%2F%2Flocalhost:4321/participate/?return=true`
+    - e.g., `https://pol.is/9dcfba8kv6?site_id=polis_site_id_XXXXXXXXXXXXXXXXXX&page_id=foobar&...`
 1. Note the Polis convo ID (in the example above, `9dcfba8kv6`).
     - you will need it when you see mention of setting the envvar `PUBLIC_POLIS_CONVO_ID`.
 1. You can confirm that this worked by visiting https://pol.is while logged in.
