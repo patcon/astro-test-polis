@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PolisConvo from '../components/PolisConvo.astro';
+import ReturnModal from '../components/ReturnModal.astro';
 const pageTitle = "Participate";
 const convoId = import.meta.env.PUBLIC_POLIS_CONVO_ID;
 ---
 <BaseLayout pageTitle={pageTitle}>
+  <ReturnModal />
   <PolisConvo convoId={convoId} hideTitle hideDescription />
 </BaseLayout>
