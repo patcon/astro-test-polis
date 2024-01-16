@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TypeformEmbed from '../components/TypeformEmbed.astro';
 import '../styles/typeform.css';
 const pageTitle = 'Pre-Survey';
+const typeformId = "eVNMLfqi";
 ---
 <BaseLayout pageTitle={ pageTitle }>
     <script is:inline>
@@ -11,5 +12,5 @@ const pageTitle = 'Pre-Survey';
             window.location.replace("/participate")
         }
     </script>
-    <TypeformEmbed formId="nV6ERE1f" enableSandbox />
+    <TypeformEmbed formId={typeformId} enableSandbox />
 </BaseLayout>
