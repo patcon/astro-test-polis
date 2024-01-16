@@ -5,5 +5,11 @@ import '../styles/typeform.css';
 const pageTitle = 'Pre-Survey';
 ---
 <BaseLayout pageTitle={ pageTitle }>
+    <script is:inline>
+        const isDoneSurvey = localStorage.getItem('isDoneSurvey');
+        if (isDoneSurvey) {
+            window.location.replace("/participate")
+        }
+    </script>
     <TypeformEmbed formId="nV6ERE1f" enableSandbox />
 </BaseLayout>

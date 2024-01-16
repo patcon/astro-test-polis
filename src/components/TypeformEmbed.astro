@@ -24,6 +24,7 @@ const { formId, enableSandbox }  = Astro.props;
   // const xid = localStorage.getItem('xid');
   function onTypeformSubmit(data) {
     console.log('form submitted', data)
+    localStorage.setItem('isDoneSurvey', true);
     //document.cookie = `xid=${xid}; SameSite=None; Secure`;
     window.location.replace("/participate");
   }
