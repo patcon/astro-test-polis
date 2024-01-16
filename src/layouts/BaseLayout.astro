@@ -1,6 +1,14 @@
 ---
 import NavBar from '../components/NavBar.astro';
 const { pageTitle } = Astro.props;
+
+// Render environment banners when needed.
+let envName = '';
+if (import.meta.env.DEV) {
+	envName = "Local Development";
+} else if (import.meta.env.IS_TESTING) {
+	envName = "Testing";
+}
 ---
 
 <html lang="en">
@@ -9,9 +17,11 @@ const { pageTitle } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
 		<title>{ pageTitle }</title>
 	</head>
 	<body>
+		{ envName && <div class="github-fork-ribbon left-top" data-ribbon={envName} title={envName}>{envName}</div> }
 		<NavBar />
 		<main>
 			<div class="max-w-screen-xl mx-auto p-4">
