@@ -1,0 +1,20 @@
+---
+const { mode } = Astro.props;
+switch (mode) {
+  case 'development':
+    var envName = 'Local Development';
+    break;
+  case 'testing':
+    var envName = 'Testing';
+    break;
+  default:
+    var envName = '';
+}
+// Source: https://simonwhitaker.github.io/github-fork-ribbon-css/
+---
+{ mode ==="testing" && <style>
+  .github-fork-ribbon:before {
+    background-color: #090;
+  }
+</style> }
+<div class="github-fork-ribbon left-top" data-ribbon={envName} title={envName}>{envName}</div>

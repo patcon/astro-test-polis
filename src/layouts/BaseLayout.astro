@@ -1,14 +1,18 @@
 ---
 import NavBar from '../components/NavBar.astro';
-const { pageTitle } = Astro.props;
 
 // Render environment banners when needed.
-let envName = '';
-if (import.meta.env.DEV) {
-	envName = "Local Development";
-} else if (import.meta.env.IS_TESTING) {
-	envName = "Testing";
+import Banner from '../components/Banner.astro';
+const isDev = import.meta.env.DEV;
+const isTest = import.meta.env.IS_TESTING;
+let envMode = '';
+if (isDev) {
+	envMode = "development";
+} else if (isTest) {
+	envMode = "testing";
 }
+
+const { pageTitle } = Astro.props;
 ---
 
 <html lang="en">
@@ -21,7 +25,7 @@ if (import.meta.env.DEV) {
 		<title>{ pageTitle }</title>
 	</head>
 	<body>
-		{ envName && <div class="github-fork-ribbon left-top" data-ribbon={envName} title={envName}>{envName}</div> }
+		<Banner mode={envMode} />
 		<NavBar />
 		<main>
 			<div class="max-w-screen-xl mx-auto p-4">
