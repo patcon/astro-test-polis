@@ -2,7 +2,16 @@
 
 - documentation: digital inventory. created separate accounts.
 - documentation: setup of polis convos with `parent_url`
-- 
+- documented UX flow to keep users from fragmenting data between devices
+  - See: https://github.com/patcon/astro-test-polis/issues/1
+- added Banner component to make it obvious what environment we're in
+- got flowbite theme JS working for modals
+- updated typeform intake survey: open affiliation, AI context, country.
+- now redirects past intake once completed (clicked or typed)
+- implemented `?return=true` email flow
+- made typeform ID configurable
+- added a stub page for help "restoring session"
+- made polis conversation dynamic based on environment
 
 ## v0.1.0
 
