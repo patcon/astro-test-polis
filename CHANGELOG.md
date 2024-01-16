@@ -4,17 +4,21 @@
 - documented UX flow to keep users from fragmenting data between devices
   - See: https://github.com/patcon/astro-test-polis/issues/1
 - added Banner component to make it obvious what environment we're in
+  - made polis conversation dynamic based on environment
 - updated typeform intake survey: open affiliation, AI context, country.
+  - made typeform ID configurable
 - made redirects smarter based on past progress
+  - redirects `/participate` back to front page when incomplete
+  - allows revisiting `/pre-survey` while incomplete
   - now redirects past intake once completed (clicked or typed)
 - added support when user arrives through bad UX email flow
-  - documentation: setup of polis convos with `parent_url`
-  - got flowbite theme JS working for modals
   - implemented `?return=true` email flow
+  - documentation: setup of polis convos with `parent_url`
+    - works fine when in same session
+    - but if on new device/browser, shares warning
+    - got flowbite theme JS working for modals
   - shows a ReturnModal component to explain what's going on when session state is missing
   - added a stub page for help "restoring session"
-- made typeform ID configurable
-- made polis conversation dynamic based on environment
 
 ## v0.1.0
 
