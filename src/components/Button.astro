@@ -1,0 +1,23 @@
+---
+const { link, label } = Astro.props;
+---
+<style>
+  .btn {
+    background-color: black;
+    color: white;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem 1.75rem;
+    font-size: .85rem;
+  }
+
+  .btn:hover {
+    background-color: rgb(75 85 99);
+  }
+
+  .font-chaney {
+    font-family: Chaney,Arial,sans-serif;
+  }
+</style>
+<a class="btn font-chaney" href={link}>{label}</a>
