@@ -36,9 +36,10 @@ const currentPath = pathname.slice(1); // remove the first "/"
   <div class="col-span-2 lg:col-span-7 col-start-11 lg:col-start-6">
     <nav class="bg-yellow absolute lg:static w-50 lg:w-auto top-0 right-0 lg:block h-auto lg:h-19 z-20 hidden">
       <ul class="text-md font-chaney lg:flex lg:justify-left lg:px-6 lg:text-xs xl:text-md">
-        <li class:list={[ 'group', { active: currentPath === "about" } ]}><a class="pr-8" href="/about">About Us</a></li>
+        <li class:list={[ 'group', { active: currentPath === "" } ]}><a class="pr-8" href="/">Home</a></li>
         <li class:list={[ 'group', { active: currentPath === "pre-survey" } ]}><a class="pr-8" href="/pre-survey">Pre-survey</a></li>
         <li class:list={[ 'group', { active: currentPath === "participate" } ]}><a class="pr-8" href="/participate">Participate</a></li>
+        <li class:list={[ 'group', { active: currentPath === "about" } ]}><a class="pr-8" href="/about">About</a></li>
       </ul>
     </nav>
   </div>
