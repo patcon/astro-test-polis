@@ -1,3 +1,9 @@
 - [ ] allow sharing session between devices
   - example: https://travle.earth/
   - https://github.com/patcon/astro-test-polis/issues/1
+- [ ] write copy for migrating devices
+- [ ] add multilingual support
+- [ ] get mobile working
+- [ ] move typeform to front page
+- [ ] remove strict robots.txt
+- [ ] re-align BaseLayout text
