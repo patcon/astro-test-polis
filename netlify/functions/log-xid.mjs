@@ -1,10 +1,11 @@
 export default async (req, context) => {
   const {
     ip,
-    geo: { city, country },
+    requestId,
+    geo: { city, country: { name: countryName } },
   } = context;
 
-  const logLine = `${ip} ${city}, ${country}`;
+  const logLine = `${requestId} ${ip} ${city}, ${countryName}`;
   console.log(logLine);
   return new Response(logLine);
 };
