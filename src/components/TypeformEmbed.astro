@@ -13,7 +13,7 @@ const { formId, enableSandbox }  = Astro.props;
   data-tf-transitive-search-params
   data-tf-medium="snippet"
   style="width:100%;height:500px;"
-  data-tf-hidden="xid=null">
+  data-tf-hidden="xid=null,mailchimp_uid=null">
 </div>
 <script>
   import "../scripts/generateXid.js";
@@ -21,9 +21,9 @@ const { formId, enableSandbox }  = Astro.props;
 </script>
 <script is:inline src="//embed.typeform.com/next/embed.js"></script>
 <script is:inline>
-  const polisXid = localStorage.getItem('polisUserXid');
-  const mailchimpUid = localStorage.getItem('mailchimpUid');
   function onTypeformSubmit(data) {
+    const polisXid = localStorage.getItem('polisUserXid');
+    const mailchimpUid = localStorage.getItem('mailchimpUid');
     console.log('form submitted', data)
     localStorage.setItem('isDoneSurvey', true);
     fetch('/api/log-xid', {
