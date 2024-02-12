@@ -7,3 +7,5 @@
 - [ ] move typeform to front page
 - [ ] remove strict robots.txt
 - [ ] re-align BaseLayout text
+- [x] add logo to front page
+- [x] get mailchimp referral working
