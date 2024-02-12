@@ -1,7 +1,7 @@
 export default async (req, context) => {
   const {
     geo: { city },
-  } = Astro.locals.netlify.context;
+  } = context;
 
   return new Response("Hello, world! from " + city);
 };
