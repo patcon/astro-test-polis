@@ -2,10 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TypeformEmbed from '../components/TypeformEmbed.astro';
 import '../styles/typeform.css';
-const pageTitle = 'Pre-Survey';
+const title = 'Pre-Survey';
 const typeformId = "meHESAhT";
 ---
-<BaseLayout pageTitle={ pageTitle }>
+<BaseLayout title={ title }>
     <script>
         const isDoneSurvey = localStorage.getItem('isDoneSurvey');
         if (isDoneSurvey) {

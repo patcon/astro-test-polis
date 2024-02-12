@@ -1,8 +1,9 @@
-import BaseLayout from '../layouts/BaseLayout.astro'
+---
+layout: ../layouts/BaseLayout.astro
+title: About
+---
 import Markdown from '../components/Markdown.astro'
-export const pageTitle = 'About'
 
-<BaseLayout pageTitle={pageTitle}>
 <Markdown>
 ## About The Assembly
 
@@ -45,4 +46,3 @@ Open Future is a European think tank. Its focus is on developing new approaches 
 ```
 
 </Markdown>
-</BaseLayout>
