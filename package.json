@@ -15,6 +15,8 @@
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.0.9",
     "flowbite": "^2.2.1",
+    "google-auth-library": "^9.6.3",
+    "google-spreadsheet": "^4.1.1",
     "tailwindcss": "^3.4.0"
   },
   "devDependencies": {
