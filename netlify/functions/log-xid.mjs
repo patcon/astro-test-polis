@@ -1,9 +1,12 @@
 export default async (req, context) => {
   const {
-    geo: { city },
+    ip,
+    geo: { city, country },
   } = context;
 
-  return new Response("Hello, world! from " + city);
+  const logLine = `${ip} ${city}, ${country}`;
+  console.log(logLine);
+  return new Response(logLine);
 };
 
 export const config = {
