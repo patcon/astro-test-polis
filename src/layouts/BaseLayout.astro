@@ -12,7 +12,7 @@ if (isDev) {
 	envMode = "testing";
 }
 
-const { pageTitle } = Astro.props;
+const { title } = Object.assign({}, Astro.props, Astro.props.frontmatter);
 ---
 
 <html lang="en">
@@ -22,7 +22,7 @@ const { pageTitle } = Astro.props;
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
-		<title>{ pageTitle }</title>
+		<title>{ title }</title>
 	</head>
 	<body>
 		<script src="../scripts/mailchimpReferral.js"></script>
@@ -43,7 +43,7 @@ const { pageTitle } = Astro.props;
 		<NavBar />
 		<main>
 			<div class="max-w-screen-xl mx-auto p-4">
-				<h1 class="font-chaney mb-4 text-4xl text-gray-900 md:text-5xl lg:text-6xl dark:text-white">{ pageTitle }</h1>
+				<h1 class="font-chaney mb-4 text-4xl text-gray-900 md:text-5xl lg:text-6xl dark:text-white">{ title }</h1>
 				<slot />
 			</div>
 		</main>
