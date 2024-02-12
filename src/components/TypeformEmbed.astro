@@ -21,11 +21,18 @@ const { formId, enableSandbox }  = Astro.props;
 </script>
 <script is:inline src="//embed.typeform.com/next/embed.js"></script>
 <script is:inline>
-  // const xid = localStorage.getItem('xid');
+  const polisXid = localStorage.getItem('polisUserXid');
+  const mailchimpUid = localStorage.getItem('mailchimpUid');
   function onTypeformSubmit(data) {
     console.log('form submitted', data)
     localStorage.setItem('isDoneSurvey', true);
-    //document.cookie = `xid=${xid}; SameSite=None; Secure`;
+    fetch('/api/log-xid', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ polisXid, mailchimpUid })
+    });
     window.location.replace("/participate");
   }
 </script>
