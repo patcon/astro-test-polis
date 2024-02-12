@@ -6,7 +6,7 @@ const pageTitle = 'Pre-Survey';
 const typeformId = "meHESAhT";
 ---
 <BaseLayout pageTitle={ pageTitle }>
-    <script is:inline>
+    <script>
         const isDoneSurvey = localStorage.getItem('isDoneSurvey');
         if (isDoneSurvey) {
             window.location.replace("/participate")
