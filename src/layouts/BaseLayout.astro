@@ -4,13 +4,15 @@ import NavBar from '../components/NavBar.astro';
 // Render environment banners when needed.
 import Banner from '../components/Banner.astro';
 const isDev = import.meta.env.DEV;
-const isTest = import.meta.env.IS_TESTING;
+const isTest = import.meta.env.IS_TESTING === "true";
 let envMode = '';
 if (isDev) {
 	envMode = "development";
 } else if (isTest) {
 	envMode = "testing";
 }
+
+const showBanner = import.meta.env.SHOW_BANNER === "true";
 
 const { title } = Object.assign({}, Astro.props, Astro.props.frontmatter);
 ---
@@ -39,7 +41,7 @@ const { title } = Object.assign({}, Astro.props, Astro.props.frontmatter);
 				font-family: Chaney,Arial,sans-serif;
 			}
 		</style>
-		<Banner mode={envMode} />
+		{ showBanner && <Banner mode={envMode} /> }
 		<NavBar />
 		<main>
 			<div class="max-w-screen-xl mx-auto p-4">
