@@ -3,7 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TypeformEmbed from '../components/TypeformEmbed.astro';
 import '../styles/typeform.css';
 const title = 'Pre-Survey';
-const typeformId = "meHESAhT";
+const typeformId = import.meta.env.PUBLIC_TYPEFORM_ID || "OgxKHILD";
+const isSandbox = import.meta.env.PUBLIC_TYPEFORM_ENABLE_SANDBOX === 'true';
 ---
 <BaseLayout title={ title }>
     <script>
@@ -12,5 +13,5 @@ const typeformId = "meHESAhT";
             window.location.replace("/participate")
         }
     </script>
-    <TypeformEmbed formId={typeformId} enableSandbox />
+    <TypeformEmbed formId={typeformId} enableSandbox={isSandbox} />
 </BaseLayout>
