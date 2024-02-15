@@ -29,16 +29,76 @@ const { title } = Object.assign({}, Astro.props, Astro.props.frontmatter);
 	<body>
 		<script src="../scripts/mailchimpReferral.js"></script>
 		<style is:global>
-			@font-face {
+						@font-face {
 				font-family: 'Chaney';
 				src: url("/fonts/chaney-regular.woff2") format("woff2"),
 					url("/fonts/chaney-regular.woff") format("woff");
-				font-weight: normal;
+				font-weight: 400;
 				font-style: normal;
 			}
 
-			.font-chaney {
-				font-family: Chaney,Arial,sans-serif;
+			@font-face {
+				font-family: 'PT Sans';
+				src: url("/fonts/ptsans-regular.woff2") format("woff2"),
+					url("/fonts/ptsans-regular.woff") format("woff");
+				font-weight: 400;
+				font-style: normal;
+			}
+
+			@font-face {
+				font-family: 'PT Sans';
+				src: url("/fonts/ptsans-bold.woff2") format("woff2"),
+					url("/fonts/ptsans-bold.woff") format("woff");
+				font-weight: 700;
+				font-style: normal;
+			}
+
+			@font-face {
+				font-family: 'PT Sans';
+				src: url("/fonts/ptsans-bolditalic.woff2") format("woff2"),
+					url("/fonts/ptsans-bolditalic.woff") format("woff");
+				font-weight: 700;
+				font-style: italic;
+			}
+
+			@font-face {
+				font-family: 'PT Sans';
+				src: url("/fonts/ptsans-italic.woff2") format("woff2"),
+					url("/fonts/ptsans-italic.woff") format("woff");
+				font-weight: 400;
+				font-style: italic;
+			}
+
+			@font-face {
+				font-family: 'PT Serif';
+				src: url("/fonts/ptserif-regular.woff2") format("woff2"),
+					url("/fonts/ptserif-regular.woff") format("woff");
+				font-weight: 400;
+				font-style: normal;
+			}
+
+			@font-face {
+				font-family: 'PT Serif';
+				src: url("/fonts/ptserif-bold.woff2") format("woff2"),
+					url("/fonts/ptserif-bold.woff") format("woff");
+				font-weight: 700;
+				font-style: normal;
+			}
+
+			@font-face {
+				font-family: 'PT Serif';
+				src: url("/fonts/ptserif-italic.woff2") format("woff2"),
+					url("/fonts/ptserif-italic.woff") format("woff");
+				font-weight: 400;
+				font-style: italic;
+			}
+
+			@font-face {
+				font-family: 'PT Serif';
+				src: url("/fonts/ptserif-bolditalic.woff2") format("woff2"),
+					url("/fonts/ptserif-bolditalic.woff") format("woff");
+				font-weight: 700;
+				font-style: italic;
 			}
 		</style>
 		{ showBanner && <Banner mode={envMode} /> }
