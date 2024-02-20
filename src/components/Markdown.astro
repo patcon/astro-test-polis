@@ -1,3 +1,6 @@
-<div class="prose prose-headings:font-chaney">
+---
+const { classes = null } = Astro.props
+---
+<div class:list={[ "prose", "prose-headings:font-chaney", classes ]}>
   <slot />
 </div>
