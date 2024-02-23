@@ -7,7 +7,6 @@ content:
     label: Pages
     path: src/pages
     type: collection
-    extension: mdx
     fields:
       - name: title
         label: Title
