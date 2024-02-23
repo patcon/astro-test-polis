@@ -1,0 +1,10 @@
+media:
+  input: public/images
+  output: /images
+  categories: [ image ]
+content:
+  - name: pages
+    label: Pages
+    path: src/pages
+    type: collection
+    extension: mdx
