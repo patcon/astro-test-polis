@@ -6,7 +6,7 @@ content:
   - name: pages
     label: Pages
     path: src/pages
-    filename: {fields.title}.md
+    filename: {fields.title}.mdx
     type: collection
     fields:
       - name: title
