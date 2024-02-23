@@ -8,3 +8,10 @@ content:
     path: src/pages
     type: collection
     extension: mdx
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: layout
+        label: Layout
+        type: string
