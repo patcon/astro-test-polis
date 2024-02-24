@@ -1,0 +1,5 @@
+[build]
+  # Write awk exclude pattern for all the glob lines in the file.
+  # E.g., `git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ':!/data/*' ':!.pages.yml' 
+  # See: https://docs.netlify.com/configure-builds/ignore-builds/#mimic-default-behavior
+  ignore = "cat .netlifyignore | xargs -I{} echo "':{}'" | xargs git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF"
