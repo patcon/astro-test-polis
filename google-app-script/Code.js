@@ -38,6 +38,54 @@ function fetchStatements(convoId) {
   return allStatements
 }
 
+function fetchPCA(convoId) {
+  var options = {};
+  const url = `https://pol.is/api/v3/participationInit?conversation_id=${convoId}`;
+  const response = UrlFetchApp.fetch(url, options);
+  const convoInitData = JSON.parse(response.getContentText());
+  const allPCAData = JSON.parse(convoInitData.pca);
+
+  function processConsensus(input) {
+    var output = {}
+    for (const [voteType, statementsArray] of Object.entries(input)) {
+      statementsArray.forEach(stmnt => output[stmnt.tid] = {
+        voteType,
+        percent: stmnt["p-success"]*100,
+      })
+    }
+    // Logger.log(JSON.stringify(output, null, 2))
+    return output
+  }
+
+  // TODO: Fix repness to allow tids to have multiple purposes
+  // e.g., agree to one group + disagree for another
+  function processRepness(input) {
+    var output = {}
+    for (const [groupId, statementsArray] of Object.entries(input)) {
+      statementsArray.forEach(stmnt => output[stmnt.tid] = {
+        voteType: stmnt["repful-for"],
+        percent: stmnt["p-success"]*100,
+        groupId,
+      })
+    }
+    // Logger.log(JSON.stringify(output, null, 2))
+    return output
+  }
+
+  const processedData = {
+    commentPriorities: allPCAData["comment-priorities"],
+    groupAwareConsensus: allPCAData["group-aware-consensus"],
+    consensus: processConsensus(allPCAData["consensus"]),
+    repness: processRepness(allPCAData["repness"]),
+  }
+  // Logger.log(JSON.stringify(allPCAData["consensus"], null, 2))
+  // Logger.log(JSON.stringify(Object.keys(allPCAData), null, 2))
+  Logger.log(JSON.stringify(processedData.consensus, null, 2))
+  Logger.log(JSON.stringify(processedData.repness, null, 2))
+
+  return processedData
+}
+
 function convertSheetToObject(sheet) {
   // See: https://hawksey.info/blog/2018/02/google-apps-script-patterns-conditionally-updating-rows-of-google-sheet-data-by-reading-and-writing-data-once/
   const dataRange = sheet.getDataRange()
@@ -104,12 +152,15 @@ function updateStatementSheet() {
   const config = new Config()
 
   try {
-    // Fetch all statements from Polis platform API.
-    const allStatements = fetchStatements(CONVO_ID)
-
     // Get all the cell values.
     var statementsSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
     const {dataRange, valuesArray: data, header, valuesObject: obj} = convertSheetToObject(statementsSheet)
+
+    // Fetch all statements from Polis platform API.
+    const allStatements = fetchStatements(CONVO_ID)
+
+    // Fetch PCA data from Polis platform API.
+    const pcaData = fetchPCA(CONVO_ID)
 
     // For each row of allStatements
     allStatements.forEach((statement) => {
@@ -119,6 +170,16 @@ function updateStatementSheet() {
         // If found, fetch statements values based on header,
         // and if none, use previous cell value.
         data[matchingRowIndex] = header.map((headerVal, i) => {
+          // Get extra metadata about comments, if available in PCA data.
+          if (headerVal === "commentPriority") return pcaData.commentPriorities[statement.tid]
+          if (headerVal === "groupAwareConsensus") return pcaData.groupAwareConsensus[statement.tid]
+          if (headerVal === "consensus") {
+            const data = pcaData.consensus[statement.tid]
+            return data ? `${data.percent.toFixed(1)}% ${data.voteType}` : ""
+          }
+          // TODO: Add ability to output repness.
+          if (headerVal === "consensus") return ""
+
           const updated = config.getTransformedValue(statement, headerVal)
           const previous = data[matchingRowIndex][i]
           // If value is missing from updated API response

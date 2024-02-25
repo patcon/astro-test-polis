@@ -14,6 +14,10 @@ Spreadsheet that makes managing a Polis conversation simpler.
     - `created` submission date
     - `is_seed` whether a statement was submitted via admin UI
     - `is_meta` whether a statement has been designated as a "meta statement"
+- Adds advanced metadata for each statement, pulled from the visualization's logic.
+    - `commentPriority` some measure of comment routing priority (#todo figure this out)
+    - `consensus` percentage agree/disagree, if statement represents a majority opinion
+    - `groupAwareConsensus` some sort of weight percentage consensus (#todo figure this out)
 - Allows removing any unwanted automated columns. Automation will just stop
   adding that type of data.
 - Allows customizing sheet with arbitrary columns, formulas, and validation.
@@ -64,9 +68,9 @@ Update statement sheet`.
 
 ## Roadmap
 - Add additional metadata about each statements (from PCA data used in viz)
-    - [ ] `group-informed-consensus`
-    - [ ] `comment-priorities` to indicate "comment routing" order
-    - [ ] `consensus` statements (both agree/disagree)
+    - [x] `group-aware-consensus`
+    - [x] `comment-priorities` to indicate "comment routing" order
+    - [x] `consensus` statements (both agree/disagree)
     - [ ] `repness` to show which clusters a statement is representative of
 - [ ] Offer a template spreadsheet that can be used to get up and running quickly.
 - From the spreadsheet itself...
