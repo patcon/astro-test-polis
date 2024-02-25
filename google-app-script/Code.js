@@ -8,21 +8,23 @@ function onOpen() {
 
 // Allow case-insensitive naming of the sheet.
 // Require Polis conversation ID be in parentheses at the end.
-const SHEET_NAME_RE = /^live statements \((?<convoId>[a-z0-9]+)\)/i
+const STATEMENT_SHEET_NAME_RE = /^live statements \((?<convoId>[a-z0-9]+)\)/i
+// TODO: Allow Config class to use this regex.
+// const CONFIG_SHEET_NAME_RE = /^configuration$/i
 
 function getStatementsSheet() {
   const sheets = SpreadsheetApp.getActiveSpreadsheet().getSheets()
-  const statementsSheet = sheets.find(sh => sh.getName().match(SHEET_NAME_RE))
+  const statementsSheet = sheets.find(sh => sh.getName().match(STATEMENT_SHEET_NAME_RE))
 
   return statementsSheet
 }
 
 function getPolisConvoId() {
   const statementsSheet = getStatementsSheet()
-  const match = statementsSheet?.getName().match(SHEET_NAME_RE)
+  const match = statementsSheet?.getName().match(STATEMENT_SHEET_NAME_RE)
   const convoId = match?.groups.convoId
 
-  //Logger.log(convoId)
+  // Logger.log(convoId)
   return convoId
 }
 
@@ -31,7 +33,7 @@ function fetchStatements(convoId) {
   const url = `https://pol.is/api/v3/comments?conversation_id=${convoId}&moderation=true&include_voting_patterns=true`;
   const response = UrlFetchApp.fetch(url, options);
   const allStatements = JSON.parse(response.getContentText());
-  //Logger.log(JSON.stringify(allStatements, null, 2));
+  // Logger.log(JSON.stringify(allStatements, null, 2));
 
   return allStatements
 }
@@ -61,7 +63,7 @@ function convertSheetToObject(sheet) {
       return o;
     }, {});
   });
-  //Logger.log(JSON.stringify(valuesObject, null, 2));
+  // Logger.log(JSON.stringify(valuesObject, null, 2));
 
   return { dataRange, valuesArray, header, valuesObject}
 }
@@ -90,11 +92,8 @@ class Config {
 
   getTransformedValue(statement, header) {
     const originalValue = statement[header]
-    //const transformationsV2 = generateTransformationKey()
-    //const { transformations } = new Config().parseConfiguration()
-    //const transformations = generateTransformationKeyMock()
-
     const newValue = this.transformations?.[header]?.[originalValue]
+
     return newValue !== undefined ? newValue : originalValue
   }
 }
@@ -130,7 +129,7 @@ function updateStatementSheet() {
         // Otherwise, append a new object.
         const newRow = header.map(headerVal => config.getTransformedValue(statement, headerVal))
         data.push(newRow)
-        //Logger.log(newRow);
+        // Logger.log(newRow);
       }
     })
 
