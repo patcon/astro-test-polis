@@ -15,9 +15,9 @@ Spreadsheet that makes managing a Polis conversation simpler.
     - `is_seed` whether a statement was submitted via admin UI
     - `is_meta` whether a statement has been designated as a "meta statement"
 - Adds advanced metadata for each statement, pulled from the visualization's logic.
-    - `commentPriority` some measure of comment routing priority (#todo figure this out)
+    - `commentPriority` a measure of ["comment routing" priority/order](https://compdemocracy.org/comment-routing/)
     - `consensus` percentage agree/disagree, if statement represents a majority opinion
-    - `groupAwareConsensus` some sort of weight percentage consensus (#todo figure this out)
+    - `groupAwareConsensus` [group-informed consensus](https://compdemocracy.org/group-informed-consensus/) is a weighted percentage consensus that prioritizes agreement across groups
 - Allows removing any unwanted automated columns. Automation will just stop
   adding that type of data.
 - Allows customizing sheet with arbitrary columns, formulas, and validation.
@@ -71,7 +71,8 @@ Update statement sheet`.
     - [x] `group-aware-consensus`
     - [x] `comment-priorities` to indicate "comment routing" order
     - [x] `consensus` statements (both agree/disagree)
-    - [ ] `repness` to show which clusters a statement is representative of
+    - [ ] `repness` shows a measure of [how representative a comment is of a group](https://compdemocracy.org/Representative-Comments/)
+- [ ] When a cell is unchanged, be intelligent about updating a cell (so version history is cleaner)
 - [ ] Offer a template spreadsheet that can be used to get up and running quickly.
 - From the spreadsheet itself...
     - [ ] Accept/reject submitted statements
