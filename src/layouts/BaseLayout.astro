@@ -100,6 +100,31 @@ const { title } = Object.assign({}, Astro.props, Astro.props.frontmatter);
 				font-weight: 700;
 				font-style: italic;
 			}
+
+			.logo-container {
+			  display: flex;
+			  flex-wrap: wrap;
+			  justify-content: center;
+			  align-items: center;
+			  gap: 20px;
+			  max-width: 800px; /* Adjust the maximum width as needed */
+			  margin: 0 auto; /* Center the logo container */
+			}
+			
+			.logo-container > div {
+			  width: calc(50% - 20px); /* Adjust the width of each logo container */
+			  max-width: 250px; /* Limit the maximum width of each logo container */
+			}
+			
+			.logo-container img {
+			  width: 100%;
+			  height: auto;
+			}
+			@media only screen and (max-width: 768px) {
+			  .logo-container > div {
+			    width: calc(100% - 20px); /* Adjust the width of each logo container for smaller screens */
+			  }
+			}
 		</style>
 		{ showBanner && <Banner mode={envMode} /> }
 		<NavBar />
