@@ -1,0 +1,53 @@
+<style>
+  .logo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 800px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the logo container */
+  }
+
+  .logo-container > div {
+    width: calc(50% - 20px); /* Adjust the width of each logo container */
+    max-width: 250px; /* Limit the maximum width of each logo container */
+  }
+
+  .logo-container img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .logo-container > div {
+      width: calc(100% - 20px); /* Adjust the width of each logo container for smaller screens */
+    }
+  }
+</style>
+<div class="logo-container">
+  <div>
+    <img src="https://mirrors.creativecommons.org/presskit/icons/heart.black.png" alt="Creative Commons">
+    <p> Creative Commons </p>
+  </div>
+
+  <div>
+    <img src="https://images.squarespace-cdn.com/content/631d02b2dfa9482a32db47ec/f8ea76e5-efa3-4a74-93f7-a67c206d1f5d/Screen+Shot+2023-04-04+at+12.36.35+PM.png?format=1500w&content-type=image%2Fpng" alt="CIP">
+    <p> Collective Intelligence Project </a>
+  </div>
+
+  <div>
+    <img src="https://okfn.org/assets/img/OKF-logo-white-background.png" alt="Open Knowledge Foundation">
+    <p>Open Knowledge Foundation</p>
+  </div>
+
+  <div>
+    <img src="https://ooni.org/partners/karisma-foundation/images/logo-karisma.png" alt="Fundación Karisma">
+    <p>Fundación Karisma</p>
+  </div>
+
+  <div>
+    <img src="https://communia-association.org/wp-content/uploads/2022/07/cropped-communia-logo-round.png" alt="COMMUNIA">
+    <p>Communia Association</p>
+  </div>
+</div>
