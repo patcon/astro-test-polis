@@ -1,11 +1,28 @@
+- [x] add logo to front page
+- [x] get mailchimp referral working
+- [ ] add spanish text to website
+    - https://docs.google.com/document/d/1LXLazXsDJKGWPn4c6RFfHqJOnHVYn87msmatuP1amhQ/edit#heading=h.a7xsjnfsm6qo
+- [x] add spanish text to typeform
+    - https://docs.google.com/document/d/1LXLazXsDJKGWPn4c6RFfHqJOnHVYn87msmatuP1amhQ/edit#heading=h.a7xsjnfsm6qo
+- [ ] logos on About page
+- [ ] add TOC to FAQ
+- [ ] get mobile working (menu visible)
+- [x] write copy for migrating devices
+- [ ] re-align BaseLayout text
+- [ ] write readme
+- [ ] move typeform to front page
+- [ ] add multilingual support
+- [ ] respect DO NOT TRACK headers in IP logging
+- [ ] popup to warn when delays in voting
+- [ ] document netlifyignore file
+- [ ] custom email subscription dialog
+    - `http POST https://pol.is/api/v3/convSubscriptions User-Agent:z type=1 email=test@mailinator.com conversation_id=5cr2n4jaua xid=foobar2`
 - [ ] allow sharing session between devices
   - example: https://travle.earth/
   - https://github.com/patcon/astro-test-polis/issues/1
-- [ ] write copy for migrating devices
-- [ ] add multilingual support
-- [ ] get mobile working
-- [ ] move typeform to front page
-- [ ] remove strict robots.txt
-- [ ] re-align BaseLayout text
-- [x] add logo to front page
-- [x] get mailchimp referral working
+
+- Go live
+    - [x] remove strict robots.txt
+    - [x] remove banner
+    - [x] take typeform out of sandbox mode
+    - [x] remove debug screen from typeform
