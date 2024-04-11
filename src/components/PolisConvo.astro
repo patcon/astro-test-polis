@@ -1,10 +1,15 @@
 ---
 const { convoId, hideTitle, hideDescription } = Astro.props;
 ---
-{/* Disable topic and description. */}
-<div class="polis"
+{/* Disable topic and description. Xid added below via JS. */}
+<div id="myPolis" class="polis"
   data-conversation_id={ convoId }
   {...{"data-ucst": !!hideTitle }}
   {...{"data-ucsd": !!hideDescription }}
 ></div>
+<script>
+  const polisXid = localStorage.getItem('polisUserXid');
+  const elem = document.getElementById('myPolis');
+  elem.setAttribute('data-xid', polisXid);
+</script>
 <script async src="https://pol.is/embed.js"></script>
